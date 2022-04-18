@@ -38,7 +38,7 @@ public class GuessNumbers {
 
   private void validateSize(List<Integer> numbers) {
     if (numbers.size() != GUESS_NUMBERS_SIZE) {
-      throw new IllegalArgumentException("추측넘버는 3개만 가능합니다.");
+      throw new IllegalArgumentException("추측넘버는 3개의 숫자를 입력해야합니다.");
     }
   }
 

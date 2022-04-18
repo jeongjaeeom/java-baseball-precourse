@@ -9,9 +9,9 @@ class GuessNumberTest {
 
   @ParameterizedTest
   @ValueSource(strings = {"a", "ab", "abcd", "abcde", "1ab", "a2c", "ab3", "-12", "1-2", "113", "111"})
-  public void 입력값오류_테스트(String input) {
+  public void 사용자_추측값_입력_예외테스트(String input) {
     assertThatThrownBy(() -> new GuessNumbers(GuessNumbersParser.parse(input)))
-        .isInstanceOf(IllegalArgumentException.class);
+            .isInstanceOf(IllegalArgumentException.class);
   }
 
 }

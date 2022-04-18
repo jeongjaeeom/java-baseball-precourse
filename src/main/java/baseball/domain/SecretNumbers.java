@@ -7,8 +7,6 @@ import java.util.Set;
 
 public class SecretNumbers {
 
-  public static final int SECRET_NUMBER_MIN_VALUE = 1;
-  public static final int SECRET_NUMBER_MAX_VALUE = 9;
   public static final int SECRET_NUMBERS_SIZE = 3;
 
   private final List<Integer> numbers;

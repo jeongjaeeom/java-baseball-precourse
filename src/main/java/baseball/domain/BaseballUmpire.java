@@ -4,25 +4,39 @@ import java.util.Objects;
 
 public class BaseballUmpire {
 
-  private final SecretNumbers secretNumbers;
+  private SecretNumbers secretNumbers;
+  private BallCount ballCount;
 
   public BaseballUmpire(SecretNumbers secretNumbers) {
     this.secretNumbers = secretNumbers;
+    this.ballCount = new BallCount();
   }
 
-  public BallCount decide(GuessNumbers guessNumbers) {
-    BallCount ballCount = new BallCount();
+  public void decide(GuessNumbers guessNumbers) {
+    ballCount.initialize();
     for (int i = 0; i < secretNumbers.size(); i++) {
-      decide(ballCount, secretNumbers.get(i), guessNumbers.get(i));
+      decide(secretNumbers.get(i), guessNumbers.get(i));
     }
-    return ballCount;
   }
 
-  private void decide(BallCount ballCount, Integer secretNumber, Integer guessNumber) {
+  public BallCount getBallCount() {
+    return new BallCount(ballCount.getStrike(), ballCount.getBall());
+  }
+
+  public boolean isStrikeout() {
+    return ballCount.isStrikeout();
+  }
+
+  public void resetGame(SecretNumbers secretNumbers) {
+    this.secretNumbers = secretNumbers;
+    this.ballCount = new BallCount();
+  }
+
+  private void decide(Integer secretNumber, Integer guessNumber) {
     if (Objects.equals(secretNumber, guessNumber)) {
-      ballCount.strike();
+      ballCount.addStrike();
     } else if (secretNumbers.contains(guessNumber)) {
-      ballCount.ball();
+      ballCount.addBall();
     }
   }
 

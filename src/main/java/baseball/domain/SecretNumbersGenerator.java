@@ -8,16 +8,20 @@ import java.util.Set;
 
 public class SecretNumbersGenerator {
 
-  protected static final int MIN_VALUE = 1;
-  protected static final int MAX_VALUE = 9;
-  protected static final int SIZE = 3;
+    public static final int SECRET_NUMBER_MIN_VALUE = 1;
+    public static final int SECRET_NUMBER_MAX_VALUE = 9;
+    public static final int SECRET_NUMBERS_SIZE = 3;
 
-  public static List<Integer> generate() {
-    final Set<Integer> numbers = new LinkedHashSet<>(SIZE);
-    while (numbers.size() < SIZE) {
-      numbers.add(Randoms.pickNumberInRange(MIN_VALUE, MAX_VALUE));
+    private SecretNumbersGenerator() {
+        throw new IllegalStateException("Not supported");
     }
-    return new ArrayList<>(numbers);
-  }
+
+    public static List<Integer> generate() {
+        final Set<Integer> numbers = new LinkedHashSet<>(SECRET_NUMBERS_SIZE);
+        while (numbers.size() < SECRET_NUMBERS_SIZE) {
+            numbers.add(Randoms.pickNumberInRange(SECRET_NUMBER_MIN_VALUE, SECRET_NUMBER_MAX_VALUE));
+        }
+        return new ArrayList<>(numbers);
+    }
 
 }
